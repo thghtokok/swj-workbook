@@ -3,13 +3,10 @@ package cn.thght.swj.workbook.utils.dateformat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 import java.util.TimeZone;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.util.StringUtils;
 
-import cn.thght.swj.workbook.utils.CommonConst;
 import lombok.extern.log4j.Log4j;
 
 /**
@@ -20,10 +17,6 @@ import lombok.extern.log4j.Log4j;
  */
 @Log4j
 public final class DateFormatUtils {
-    /** SimpleDateFormat池 避免重复建设 */
-    private static Map<DateFormatTypeEnum, SimpleDateFormat> dateFormatTypePool = new ConcurrentHashMap<>(
-            CommonConst.DEFAULT_COLLECTION_SIZE);
-
     /**
      * 将字符串转为 long类型的时间戳 秒级别的<br>
      * 字符串的时间格式为 : yyyy-MM-dd
@@ -33,7 +26,7 @@ public final class DateFormatUtils {
      */
     public static long dateToStempAsLong(String dateStr) {
         long timeStemp = 0L;
-        if(StringUtils.isEmpty(dateStr)) {
+        if (StringUtils.isEmpty(dateStr)) {
             return timeStemp;
         }
         /** 1000毫秒等于1秒 */
@@ -63,8 +56,7 @@ public final class DateFormatUtils {
     /**
      * 返回GMT+8的时间 例子: 470880000000L to 470851200000L
      * 
-     * @param sourceTimeStamp
-     *            GMT
+     * @param sourceTimeStamp GMT
      * @return 北京时间
      */
     public static Date dateTimeZoneGMT8(Long sourceTimeStamp) {
@@ -79,8 +71,7 @@ public final class DateFormatUtils {
     /**
      * 返回GMT+8的时间
      * 
-     * @param sourceTime
-     *            GMT
+     * @param sourceTime GMT
      * @return 北京时间
      */
     public static Date dateTimeZoneGMT8(Date sourceTime) {
@@ -93,8 +84,7 @@ public final class DateFormatUtils {
     /**
      * Date String Format yyyy/M/d
      * 
-     * @param d
-     *            被转换的Date类型数据
+     * @param d 被转换的Date类型数据
      * @return 格式化后的字符串
      */
     public static String format(Date d) {
@@ -103,10 +93,8 @@ public final class DateFormatUtils {
 
     /**
      * 
-     * @param d
-     *            被转换的Date类型数据
-     * @param format
-     *            转换模板
+     * @param d      被转换的Date类型数据
+     * @param format 转换模板
      * @return 格式化后的字符串
      */
     public static String format(Date d, DateFormatTypeEnum format) {
@@ -122,32 +110,28 @@ public final class DateFormatUtils {
      * @param str
      * @param dateFormatType
      * @return
+     * @throws ParseException
      */
-    public static Date stringToDate(String str, DateFormatTypeEnum dateFormatType) {
+    public static Date stringToDate(String str, DateFormatTypeEnum dateFormatType) throws ParseException {
         if (StringUtils.isEmpty(str)) {
             return null;
         }
-        try {
-            return getSimpleDateFormat(dateFormatType).parse(str);
-        } catch (ParseException e) {
-            log.error("message",e);
-            return null;
-        }
+        return getSimpleDateFormat(dateFormatType).parse(str);
     }
 
     /**
      * 将字符串转为Date
      * 
-     * @param str
-     *            格式:"yyyy-MM-dd HH:mm:ss"
+     * @param str 格式:"yyyy-MM-dd HH:mm:ss"
      * @return
+     * @throws ParseException 
      */
-    public static Date stringToDate(String str) {
+    public static Date stringToDate(String str) throws ParseException {
         return stringToDate(str, DateFormatTypeEnum.THREE);
     }
 
     private static SimpleDateFormat getSimpleDateFormat(DateFormatTypeEnum format) {
-        return dateFormatTypePool.computeIfAbsent(format, key -> new SimpleDateFormat(format.getValue()));
+        return new SimpleDateFormat(format.getValue());
     }
 
     private DateFormatUtils() {

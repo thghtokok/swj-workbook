@@ -95,8 +95,11 @@ public enum ActionDataExcelKeysEnum {
                 } catch (Exception e) {
                 }
                 if (temp == null) {
-                    temp = DateFormatUtils.format(DateFormatUtils.stringToDate(value, DateFormatTypeEnum.ONE),
-                            DateFormatTypeEnum.ONE_SHORT);
+                    try {
+                        temp = DateFormatUtils.format(DateFormatUtils.stringToDate(value, DateFormatTypeEnum.ONE),
+                                DateFormatTypeEnum.ONE_SHORT);
+                    } catch (Exception e) {
+                    }
                 }
             }
 
@@ -122,8 +125,11 @@ public enum ActionDataExcelKeysEnum {
                 } catch (Exception e) {
                 }
                 if (temp == null) {
-                    temp = DateFormatUtils.format(DateFormatUtils.stringToDate(value, DateFormatTypeEnum.ONE),
-                            DateFormatTypeEnum.ONE_SHORT);
+                    try {
+                        temp = DateFormatUtils.format(DateFormatUtils.stringToDate(value, DateFormatTypeEnum.ONE),
+                                DateFormatTypeEnum.ONE_SHORT);
+                    } catch (Exception e) {
+                    }
                 }
             }
             actionData.setInitialLoanDate(temp);

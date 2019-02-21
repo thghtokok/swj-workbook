@@ -161,15 +161,17 @@ class ResultDataSort implements Comparator<ActionData> {
         if (modeSort && this.getSort(o1.getInitialLoanAmount()) != this.getSort(o2.getInitialLoanAmount())) {
             return this.getSort(o1.getInitialLoanAmount()) - this.getSort(o2.getInitialLoanAmount());
         }
+        try {
+            Date o1Date = DateFormatUtils.stringToDate(o1.getInitialLoanDate(), DateFormatTypeEnum.ONE);
+            Date o2Date = DateFormatUtils.stringToDate(o2.getInitialLoanDate(), DateFormatTypeEnum.ONE);
 
-        Date o1Date = DateFormatUtils.stringToDate(o1.getInitialLoanDate(), DateFormatTypeEnum.ONE);
-        Date o2Date = DateFormatUtils.stringToDate(o2.getInitialLoanDate(), DateFormatTypeEnum.ONE);
-
-        if (o1Date.before(o2Date)) {
-            return 1;
-        }
-        if (o1Date.after(o2Date)) {
-            return -1;
+            if (o1Date.before(o2Date)) {
+                return 1;
+            }
+            if (o1Date.after(o2Date)) {
+                return -1;
+            }
+        } catch (Exception e) {
         }
         return 0;
     }
