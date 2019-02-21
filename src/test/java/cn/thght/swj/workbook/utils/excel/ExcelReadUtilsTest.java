@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +24,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ExcelReadUtilsTest {
 
+    @Ignore
     @Test
     public void testReadExcelInputStream() {
 

@@ -2,6 +2,7 @@ package cn.thght.swj.workbook.utils.dateformat;
 
 import static org.junit.Assert.fail;
 
+import java.text.ParseException;
 import java.util.Date;
 
 import org.junit.Test;
@@ -13,7 +14,7 @@ import org.junit.Test;
 public class DateFormatUtilsTest {
 
     @Test
-    public void testStringToDateStringDateFormatTypeEnum() {
+    public void testStringToDateStringDateFormatTypeEnum() throws ParseException {
         String string = "2018/8/31";
         Date date = DateFormatUtils.stringToDate(string,DateFormatTypeEnum.ONE);
         System.out.println(date);
