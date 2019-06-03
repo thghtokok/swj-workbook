@@ -133,7 +133,7 @@ public enum ActionDataExcelKeysEnum {
     ;
 
     /** 解析的列数,小于这个数表示信息不完整或不符合成绩导入模板 */
-    public static final int MAX_COLUMN_NUM = 17;
+    public static final int MAX_COLUMN_NUM = 15;
 
     private int index;
     private String columnname;
