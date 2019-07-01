@@ -112,36 +112,36 @@ public class ResultData {
     /** 合计初始出借金额 */
     public String getInitialLoanAmountSum() {
         BigDecimal result = BigDecimal.ZERO;
-        resultAdd(result, this.initialLoanAmount);
-        resultAdd(result, this.initialLoanAmount1);
-        resultAdd(result, this.initialLoanAmount2);
-        resultAdd(result, this.initialLoanAmount3);
-        resultAdd(result, this.initialLoanAmount4);
-        resultAdd(result, this.initialLoanAmount5);
+        result = resultAdd(result, this.initialLoanAmount);
+        result = resultAdd(result, this.initialLoanAmount1);
+        result = resultAdd(result, this.initialLoanAmount2);
+        result = resultAdd(result, this.initialLoanAmount3);
+        result = resultAdd(result, this.initialLoanAmount4);
+        result = resultAdd(result, this.initialLoanAmount5);
         return FORMAT.format(result);
     }
 
     /** 合计报告日回款总额 */
     public String getTotalReportDayReturnsSum() {
         BigDecimal result = BigDecimal.ZERO;
-        resultAdd(result, this.totalReportDayReturns);
-        resultAdd(result, this.totalReportDayReturns1);
-        resultAdd(result, this.totalReportDayReturns2);
-        resultAdd(result, this.totalReportDayReturns3);
-        resultAdd(result, this.totalReportDayReturns4);
-        resultAdd(result, this.totalReportDayReturns5);
+        result = resultAdd(result, this.totalReportDayReturns);
+        result = resultAdd(result, this.totalReportDayReturns1);
+        result = resultAdd(result, this.totalReportDayReturns2);
+        result = resultAdd(result, this.totalReportDayReturns3);
+        result = resultAdd(result, this.totalReportDayReturns4);
+        result = resultAdd(result, this.totalReportDayReturns5);
         return FORMAT.format(result);
     }
 
     /** 合计报告日资金总额 */
     public String getTotalReportDayAssetsSum() {
         BigDecimal result = BigDecimal.ZERO;
-        resultAdd(result, this.totalReportDayAssets);
-        resultAdd(result, this.totalReportDayAssets1);
-        resultAdd(result, this.totalReportDayAssets2);
-        resultAdd(result, this.totalReportDayAssets3);
-        resultAdd(result, this.totalReportDayAssets4);
-        resultAdd(result, this.totalReportDayAssets5);
+        result = resultAdd(result, this.totalReportDayAssets);
+        result = resultAdd(result, this.totalReportDayAssets1);
+        result = resultAdd(result, this.totalReportDayAssets2);
+        result = resultAdd(result, this.totalReportDayAssets3);
+        result = resultAdd(result, this.totalReportDayAssets4);
+        result = resultAdd(result, this.totalReportDayAssets5);
         return FORMAT.format(result);
     }
 
