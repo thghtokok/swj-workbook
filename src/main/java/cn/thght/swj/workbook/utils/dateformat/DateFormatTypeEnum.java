@@ -1,11 +1,17 @@
 package cn.thght.swj.workbook.utils.dateformat;
 
+import java.text.ParseException;
+import java.util.Date;
+
+import lombok.extern.log4j.Log4j2;
+
 /**
  * 时间格式
  * 
  * @author tHgHt-xueXi
  *
  */
+@Log4j2
 public enum DateFormatTypeEnum {
     /** yyyy/MM/dd */
     ONE("yyyy/MM/dd"),
@@ -26,6 +32,23 @@ public enum DateFormatTypeEnum {
 
     ;
     private String value;
+
+    public String format(Date date) {
+        return DateFormatUtils.format(date, this);
+    }
+
+    public String formatNow() {
+        return DateFormatUtils.format(new Date(), this);
+    }
+
+    public Date parse(String str) {
+        try {
+            return DateFormatUtils.stringToDate(str, this);
+        } catch (ParseException e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
 
     DateFormatTypeEnum(String value) {
         this.value = value;

@@ -1,7 +1,7 @@
 package cn.thght.swj.workbook.mode;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 
 import lombok.Data;
 import lombok.extern.log4j.Log4j;
@@ -98,147 +98,50 @@ public class ResultData {
     /** 报告日资产总额5 */
     private String totalReportDayAssets5;
 
+    private BigDecimal resultAdd(BigDecimal result, String num) {
+        if (num != null) {
+            try {
+                result = result.add(new BigDecimal(num.replace(",", "")));
+            } catch (NumberFormatException e) {
+                log.error(e.getMessage(), e);
+            }
+        }
+        return result;
+    }
+
     /** 合计初始出借金额 */
     public String getInitialLoanAmountSum() {
-        double result = 0;
-        if (this.initialLoanAmount != null) {
-            try {
-                result += FORMAT.parse(this.initialLoanAmount).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.initialLoanAmount1 != null) {
-            try {
-                result += FORMAT.parse(this.initialLoanAmount1).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.initialLoanAmount2 != null) {
-            try {
-                result += FORMAT.parse(this.initialLoanAmount2).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.initialLoanAmount3 != null) {
-            try {
-                result += FORMAT.parse(this.initialLoanAmount3).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.initialLoanAmount4 != null) {
-            try {
-                result += FORMAT.parse(this.initialLoanAmount4).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.initialLoanAmount5 != null) {
-            try {
-                result += FORMAT.parse(this.initialLoanAmount5).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
+        BigDecimal result = BigDecimal.ZERO;
+        result = resultAdd(result, this.initialLoanAmount);
+        result = resultAdd(result, this.initialLoanAmount1);
+        result = resultAdd(result, this.initialLoanAmount2);
+        result = resultAdd(result, this.initialLoanAmount3);
+        result = resultAdd(result, this.initialLoanAmount4);
+        result = resultAdd(result, this.initialLoanAmount5);
         return FORMAT.format(result);
     }
 
     /** 合计报告日回款总额 */
     public String getTotalReportDayReturnsSum() {
-        double result = 0;
-        if (this.totalReportDayReturns != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayReturns).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayReturns1 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayReturns1).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayReturns2 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayReturns2).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayReturns3 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayReturns3).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayReturns4 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayReturns4).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayReturns5 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayReturns5).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
+        BigDecimal result = BigDecimal.ZERO;
+        result = resultAdd(result, this.totalReportDayReturns);
+        result = resultAdd(result, this.totalReportDayReturns1);
+        result = resultAdd(result, this.totalReportDayReturns2);
+        result = resultAdd(result, this.totalReportDayReturns3);
+        result = resultAdd(result, this.totalReportDayReturns4);
+        result = resultAdd(result, this.totalReportDayReturns5);
         return FORMAT.format(result);
     }
 
     /** 合计报告日资金总额 */
     public String getTotalReportDayAssetsSum() {
-        double result = 0;
-        if (this.totalReportDayAssets != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayAssets).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayAssets1 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayAssets1).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayAssets2 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayAssets2).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayAssets3 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayAssets3).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayAssets4 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayAssets4).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
-        if (this.totalReportDayAssets5 != null) {
-            try {
-                result += FORMAT.parse(this.totalReportDayAssets5).doubleValue();
-            } catch (ParseException e) {
-                log.error("context", e);
-            }
-        }
+        BigDecimal result = BigDecimal.ZERO;
+        result = resultAdd(result, this.totalReportDayAssets);
+        result = resultAdd(result, this.totalReportDayAssets1);
+        result = resultAdd(result, this.totalReportDayAssets2);
+        result = resultAdd(result, this.totalReportDayAssets3);
+        result = resultAdd(result, this.totalReportDayAssets4);
+        result = resultAdd(result, this.totalReportDayAssets5);
         return FORMAT.format(result);
     }
 

@@ -150,7 +150,7 @@ public class ExcelReadUtils {
                     } else {
                         value = getValue(eKey, cell);
                     }
-                    ActionDataExcelKeysEnum.setField(actionDataList.getLast(), eKey, value);
+                    eKey.setField(actionDataList.getLast(), value);
                 }
                 if (StringUtils.isEmpty(actionDataList.getLast().getName())) {
                     actionDataList.removeLast();
@@ -169,22 +169,22 @@ public class ExcelReadUtils {
      */
     private static String getValue(ActionDataExcelKeysEnum eKey, Cell cell) {
         switch (cell.getCellType()) {
-        case Cell.CELL_TYPE_NUMERIC:
-            if (HSSFDateUtil.isCellDateFormatted(cell)) {
-                return DateFormatUtils.format(HSSFDateUtil.getJavaDate(cell.getNumericCellValue()),
-                        DateFormatTypeEnum.FIVE);
-            } else {
-                return ResultData.FORMAT.format(cell.getNumericCellValue());
-            }
-        case Cell.CELL_TYPE_FORMULA:
-            try {
-                return String.valueOf(cell.getNumericCellValue());
-            } catch (IllegalStateException e) {
-                return String.valueOf(cell.getRichStringCellValue());
-            }
+            case Cell.CELL_TYPE_NUMERIC:
+                if (HSSFDateUtil.isCellDateFormatted(cell)) {
+                    return DateFormatUtils.format(HSSFDateUtil.getJavaDate(cell.getNumericCellValue()),
+                            DateFormatTypeEnum.FIVE);
+                } else {
+                    return ResultData.FORMAT.format(cell.getNumericCellValue());
+                }
+            case Cell.CELL_TYPE_FORMULA:
+                try {
+                    return String.valueOf(cell.getNumericCellValue());
+                } catch (IllegalStateException e) {
+                    return String.valueOf(cell.getRichStringCellValue());
+                }
 
-        default:
-            return cell.toString();
+            default:
+                return cell.toString();
         }
 
     }
@@ -212,7 +212,7 @@ public class ExcelReadUtils {
                     } else {
                         value = getValue(eKey, cell);
                     }
-                    ActionDataExcelKeysEnum.setField(examineeAchievementsList.getLast(), eKey, value);
+                    eKey.setField(examineeAchievementsList.getLast(), value);
                 }
             }
         }
@@ -244,7 +244,7 @@ public class ExcelReadUtils {
                     } else {
                         value = getValue(eKey, cell);
                     }
-                    ActionDataExcelKeysEnum.setField(examineeAchievementsList.getLast(), eKey, value);
+                    eKey.setField(examineeAchievementsList.getLast(), value);
                 }
             }
         }

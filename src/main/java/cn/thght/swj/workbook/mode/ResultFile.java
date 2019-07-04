@@ -15,6 +15,7 @@ import lombok.Setter;
  * @author 作者: thght
  * @version 创建时间: 2018年6月30日
  */
+
 public class ResultFile {
 
     private LinkedList<ResultData> resultDataList;
@@ -26,7 +27,15 @@ public class ResultFile {
     // 一行最多6个数据
     private static final int ROW_DATA_MAX = 6;
 
-    public ResultFile(ActionFile actionFile) {
+    public static ResultFile create(ActionFile actionFile) {
+        try {
+            return new ResultFile(actionFile);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private ResultFile(ActionFile actionFile) {
         super();
         resultDataList = new LinkedList<>();
         init(actionFile);
@@ -138,21 +147,21 @@ class ResultDataSort implements Comparator<ActionData> {
 
     private int getSort(String str) {
         switch (str) {
-        case "中投富民":
-            return 1;
-        case "中投富民A":
-            return 2;
-        case "中投富民B":
-            return 3;
-        case "中投利民":
-            return 4;
-        case "中投利民A":
-            return 5;
-        case "中投利民B":
-            return 6;
+            case "中投富民":
+                return 1;
+            case "中投富民A":
+                return 2;
+            case "中投富民B":
+                return 3;
+            case "中投利民":
+                return 4;
+            case "中投利民A":
+                return 5;
+            case "中投利民B":
+                return 6;
 
-        default:
-            return 7;
+            default:
+                return 7;
         }
     }
 

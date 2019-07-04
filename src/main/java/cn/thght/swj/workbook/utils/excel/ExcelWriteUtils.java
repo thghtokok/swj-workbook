@@ -179,7 +179,7 @@ public class ExcelWriteUtils {
                     newRow = sheet.createRow(rowId + 1);
                     for (ResultDataExcelKeysEnum rdeke : ResultDataExcelKeysEnum.values()) {
                         cell = newRow.createCell(rdeke.getIndex());
-                        ResultDataExcelKeysEnum.setField(rd, rdeke, cell);
+                        rdeke.setField(rd, cell);
                     }
 
                 }
