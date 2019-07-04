@@ -37,6 +37,10 @@ public enum DateFormatTypeEnum {
         return DateFormatUtils.format(date, this);
     }
 
+    public String formatNow() {
+        return DateFormatUtils.format(new Date(), this);
+    }
+
     public Date parse(String str) {
         try {
             return DateFormatUtils.stringToDate(str, this);
