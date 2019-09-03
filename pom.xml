@@ -5,7 +5,7 @@
 
 	<groupId>cn.thght</groupId>
 	<artifactId>swj-workbook</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<packaging>jar</packaging>
 
 	<description>孙文静工作簿</description>
