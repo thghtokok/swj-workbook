@@ -134,7 +134,7 @@ public class ExcelReadUtils {
         if (mxrcn.getMaxColumnNum() < ActionDataExcelKeysEnum.MAX_COLUMN_NUM) {
             throw new ExcelAnalysisException("最大列数小于需求列数");
         }
-        LinkedList<ActionData> actionDataList = new LinkedList<ActionData>();
+        LinkedList<ActionData> actionDataList = new LinkedList<>();
         // 逐行解读
         Row row = null;
         String value = null;

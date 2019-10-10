@@ -1,7 +1,10 @@
 package cn.thght.swj.workbook.utils.excel;
 
+import org.springframework.util.StringUtils;
+
 import cn.thght.swj.workbook.mode.ActionData;
 import cn.thght.swj.workbook.utils.dateformat.DateFormatTypeEnum;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 赛区成绩导入模板
@@ -9,6 +12,7 @@ import cn.thght.swj.workbook.utils.dateformat.DateFormatTypeEnum;
  * @author tHgHt-xueXi
  *
  */
+@Slf4j
 public enum ActionDataExcelKeysEnum {
     /** 姓名 */
     NAME(0, "姓名") {
@@ -21,7 +25,10 @@ public enum ActionDataExcelKeysEnum {
     IDNUMBER(1, "证件号") {
         @Override
         public void setField(ActionData actionData, String value) {
-            actionData.setIdNumber(value.toUpperCase());
+            // log.info("{},{}", actionData, value);
+            if (!StringUtils.isEmpty(value)) {
+                actionData.setIdNumber(value.toUpperCase());
+            }
         }
     },
     /** 邮编 */
